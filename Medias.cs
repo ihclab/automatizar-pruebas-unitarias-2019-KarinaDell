@@ -11,34 +11,32 @@ namespace AutomatizarPruebasUnitarias {
         /**
          * Calcula y regresa la media artimética
          */
-        public static double mediaAritmetica(params int[] vals) { 
-
-         int i,b=0,num=5;
-         double suma=0.0
-          while(num!=0){
-               Console.WriteLine("Ingresa un numero");
-               num = Convert.ToInt16(Console.ReadLine());
-              suma=suma+num;
-              b++;
-          }
-        for (i=1; i>=0; i++) {
-         Console.WriteLine('000' + i + ':media aritmética: ' suma/(b-1));
-        Console.ReadLine();
-          }
+        public static double mediaAritmetica(params object[] vals) { 
+         double suma=0;
+         double media = 0;
+                for (int i = 0; i < vals.Length; i++) {
+                    suma = suma + vals[i];
+                }
+               media = suma / vals.Length;
+                return media;
         }
-        /**
+        
+        /*
          * Calcula y regresa la raíz enésima = x^(1/n)
          */
         private static double raizEnesima(double x, int n) {
-
-
+                return Math.Pow(x,1/n);
          }
         /**
          *  Usa raizEnesima para calcular y regresar la media geométrica
          */
         public double mediaGeometrica(params int[] vals) {
-            Console.WriteLine("Ingresa un numero");
-            num = Convert.ToInt16(Console.ReadLine());
+            double resultado = 1;
+            for (int i = 0; i < vals.Length; i++) {
+                resultado = resultado * vals[i];
+            }
+            double mG = raizEnesima(resultado, vals.Length);
+            return mG;
          }
 
         /**
@@ -47,6 +45,7 @@ namespace AutomatizarPruebasUnitarias {
         public static double mediaArmonica(params int[] vals) { 
             //Poner excepción
              Console.WriteLine("Este método no está implementado");
+
         }
     }
 }
